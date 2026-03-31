@@ -10,18 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: project-deployment.duckdns.org 
-    http:
-      paths:
-      - path: /api
-        pathType: Prefix
-        backend:
-          service: { name: backend-svc, port: { number: 5000 } }
-      - path: /
-        pathType: Prefix
-        backend:
-          service: { name: frontend-svc, port: { number: 80 } }
-  - host: project-deployment.duckdns.org 
+  - host: project-deployment.duckdns.org         # ✅ only one rule needed
     http:
       paths:
       - path: /api
@@ -33,5 +22,6 @@ spec:
         backend:
           service: { name: frontend-svc, port: { number: 80 } }
   tls:
-  - hosts: [project-deployment.duckdns.org , www.project-deployment.duckdns.org ]
-    secretName: adityajaiswal-com-tls   # <-- consistent, .com
+  - hosts:
+    - project-deployment.duckdns.org             # ✅ removed www (duckdns doesn't support www)
+    secretName: project-deployment-duckdns-tls   # ✅ fixed name to match domain
