@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: khokhar95/frontend:0ffb019cf5f575911f65a16eee29180b9f75dec4
+          image: khokhar95/frontend:3c0809ddb98a09fb6308b86a5889894e5e80707d
           ports:
             - containerPort: 80
 ---
